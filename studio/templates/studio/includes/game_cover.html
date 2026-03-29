@@ -1,0 +1,16 @@
+{% comment %}
+  Обложка игры: файл из админки или заглушка.
+  size: sm | lg
+{% endcomment %}
+{% if game.cover %}
+  <img
+    class="game-cover-img game-cover-img--{{ size|default:'sm' }}"
+    src="{{ game.cover.url }}"
+    alt="{{ game.title }}"
+    loading="lazy"
+    width="640"
+    height="360"
+  >
+{% else %}
+  <div class="game-cover-placeholder game-cover-placeholder--{{ size|default:'sm' }}" role="img" aria-label="Нет обложки"></div>
+{% endif %}

@@ -1,0 +1,29 @@
+{% extends "studio/base.html" %}
+
+{% block title %}Игры — Railly Studio{% endblock %}
+
+{% block content %}
+<div class="wrap page-head">
+  <h1>Каталог игр</h1>
+  <p class="muted">Обложки загружаются в админке в поле «обложка».</p>
+</div>
+
+<div class="wrap">
+  <ul class="game-list">
+    {% for game in games %}
+      <li class="game-row">
+        <a href="{{ game.get_absolute_url }}" class="game-row-thumb">
+          {% include "studio/includes/game_cover.html" with game=game size="xs" %}
+        </a>
+        <div class="game-row-main">
+          <h2><a href="{{ game.get_absolute_url }}">{{ game.title }}</a></h2>
+          <p class="muted">{{ game.genre }} · {{ game.get_status_display }}</p>
+        </div>
+        <a class="btn btn-ghost" href="{{ game.get_absolute_url }}">Подробнее</a>
+      </li>
+    {% empty %}
+      <li class="muted">Список пуст. Создайте записи в админке Django.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "studio/base.html" %}
+
+{% block title %}Главная — Railly Studio{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Игровая студия</p>
+    <h1>Создаём миры, в которые хочется возвращаться</h1>
+    <p class="lead">Небольшая команда разработчиков создаёт свою первую игру. <br>
+        Следите за прогрессом и развитием проекта.</p>
+    <a class="btn btn-primary" href="{% url 'studio:game_list' %}">Смотреть игры</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">В разработке и релизе</h2>
+    <div class="grid cards">
+      {% for game in featured_games %}
+        <article class="card">
+          <a href="{{ game.get_absolute_url }}" class="card-media">
+            {% include "studio/includes/game_cover.html" with game=game size="sm" %}
+          </a>
+          <div class="card-body">
+            <span class="badge">{{ game.get_status_display }}</span>
+            <h3><a href="{{ game.get_absolute_url }}">{{ game.title }}</a></h3>
+            {% if game.tagline %}<p class="muted">{{ game.tagline }}</p>{% endif %}
+            <p class="genre">{{ game.genre }}</p>
+          </div>
+        </article>
+      {% empty %}
+        <p class="muted">Пока нет игр — добавьте их в <a href="/admin/">админке</a>.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if team %}
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">Команда</h2>
+    <div class="grid team">
+      {% for member in team %}
+        <div class="team-card">
+          <h3>{{ member.name }}</h3>
+          <p class="role">{{ member.role }}</p>
+          {% if member.bio %}<p class="muted small">{{ member.bio }}</p>{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,50 @@
+[
+  {
+    "model": "studio.game",
+    "pk": 1,
+    "fields": {
+      "title": "Neon Rails",
+      "slug": "neon-rails",
+      "tagline": "Рейсы по мегаполису будущего",
+      "description": "Аркадный раннер с процедурными трассами и саундтреком в стиле synthwave. Собирайте импульсы, уклоняйтесь от препятствий и бейте рекорды.",
+      "genre": "Аркада / раннер",
+      "status": "ea",
+      "release_date": "2025-11-01",
+      "created_at": "2026-01-15T12:00:00Z"
+    }
+  },
+  {
+    "model": "studio.game",
+    "pk": 2,
+    "fields": {
+      "title": "Echo of Valleys",
+      "slug": "echo-of-valleys",
+      "tagline": "Спокойное приключение в долинах",
+      "description": "Исследуйте открытый мир, решайте головоломки со звуком и раскрывайте историю забытой цивилизации. Без сражений — только атмосфера и исследование.",
+      "genre": "Приключение",
+      "status": "dev",
+      "release_date": null,
+      "created_at": "2026-02-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "studio.teammember",
+    "pk": 1,
+    "fields": {
+      "name": "Алексей Рель",
+      "role": "Геймдизайн",
+      "bio": "Системы прогрессии и баланс.",
+      "order": 0
+    }
+  },
+  {
+    "model": "studio.teammember",
+    "pk": 2,
+    "fields": {
+      "name": "Мария Ветер",
+      "role": "Арт и UI",
+      "bio": "Визуальный стиль студии.",
+      "order": 1
+    }
+  }
+]

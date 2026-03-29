@@ -1,0 +1,430 @@
+/* Railly Studio — тёмная игровая тема */
+
+:root {
+  --bg: #0b0d12;
+  --bg-elevated: #1a1215;
+  --text: #e8eaef;
+  --muted: #9b93a0;
+  --accent: #ef4444;
+  --accent-dim: rgba(239, 68, 68, 0.15);
+  --border: #2a1f24;
+  /* нейтральная линия у футера — без красного тона от --border */
+  --footer-border: rgba(255, 255, 255, 0.07);
+  /* низ блока «Команда»: только непрозрачные цвета — иначе просвечивает фон body и портит градиент */
+  --section-alt-end: #140d10;
+  --font: "Segoe UI", system-ui, sans-serif;
+  --radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Фон на html, ellipse в vw/vh — не пересчитывается от узкой ширины body */
+html {
+  height: 100%;
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    ellipse 110vw 85vh at 50% -20vh,
+    #2a1518 0%,
+    var(--bg) 62%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 48rem) {
+  html {
+    /* fixed + градиент на iOS иногда глючит */
+    background-attachment: scroll;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  background: transparent;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 13, 18, 0.85);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.hero {
+  padding: 4rem 0 3rem;
+}
+
+.hero-inner {
+  text-align: center;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  max-width: 20ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 42rem;
+  margin: 0 auto 1.75rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #140808;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  text-decoration: none;
+}
+
+.btn-ghost {
+  border-color: var(--border);
+  color: var(--text);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.section {
+  padding: 2.5rem 0;
+}
+
+.section-alt {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--section-alt-end) 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 1.35rem;
+  margin: 0 0 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .team {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  border-color: rgba(239, 68, 68, 0.45);
+  transform: translateY(-2px);
+}
+
+.card-media {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.card-media:hover {
+  opacity: 0.97;
+}
+
+.card-media .game-cover-img,
+.card-media .game-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card h3 {
+  margin: 0.5rem 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.card h3 a {
+  color: var(--text);
+}
+
+.card h3 a:hover {
+  color: var(--accent);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.9rem;
+}
+
+.genre {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.team-card {
+  padding: 1.25rem;
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.team-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.role {
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  background: var(--bg);
+  border-top: 1px solid var(--footer-border);
+  padding: 1.5rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.page-head {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.page-head h1 {
+  margin: 0 0 0.5rem;
+}
+
+.game-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.game-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.game-row-thumb {
+  flex: 0 0 auto;
+  width: 148px;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.game-row-thumb .game-cover-img,
+.game-row-thumb .game-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.game-row-main {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.game-row h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+}
+
+.game-row h2 a {
+  color: var(--text);
+}
+
+.game-row h2 a:hover {
+  color: var(--accent);
+}
+
+.game-detail {
+  padding: 2rem 0 3rem;
+}
+
+.game-detail-cover {
+  margin-bottom: 1.75rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  max-height: min(42vh, 400px);
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.game-detail-cover .game-cover-img,
+.game-detail-cover .game-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.game-cover-placeholder {
+  background: linear-gradient(145deg, #141018 0%, #2a1820 45%, #141018 100%);
+}
+
+.game-header {
+  margin-bottom: 2rem;
+}
+
+.game-header h1 {
+  margin: 0.75rem 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.meta {
+  color: var(--muted);
+  margin: 0;
+}
+
+.prose {
+  max-width: 65ch;
+  color: var(--muted);
+}
+
+.prose p {
+  margin: 0 0 1rem;
+}
+
+code {
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  background: var(--bg-elevated);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
