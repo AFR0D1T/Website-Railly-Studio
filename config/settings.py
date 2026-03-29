@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-blk_v@7eh$yt9z#u0sy0j*9ceopkfeduo#3=))sm2!ed+@)hgw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['afrodit.pythonanywhere.com']
 
 
 # Application definition
@@ -115,7 +115,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = '/home/AFRODIT/Website-Railly-Studio/staticfiles'
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
