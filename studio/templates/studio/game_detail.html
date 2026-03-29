@@ -1,21 +1,1 @@
-{% extends "studio/base.html" %}
-
-{% block title %}{{ game.title }} — Railly Studio{% endblock %}
-
-{% block content %}
-<article class="wrap game-detail">
-  <p class="eyebrow"><a href="{% url 'studio:game_list' %}">← Все игры</a></p>
-  <div class="game-detail-cover">
-    {% include "studio/includes/game_cover.html" with game=game size="lg" %}
-  </div>
-  <header class="game-header">
-    <span class="badge">{{ game.get_status_display }}</span>
-    <h1>{{ game.title }}</h1>
-    {% if game.tagline %}<p class="lead">{{ game.tagline }}</p>{% endif %}
-    <p class="meta">{{ game.genre }}{% if game.release_date %} · Релиз: {{ game.release_date|date:"d E Y" }}{% endif %}</p>
-  </header>
-  <div class="prose">
-    {{ game.description|linebreaks }}
-  </div>
-</article>
-{% endblock %}
+{% extends "studio/base.html" %}{% block title %}{{ game.title }} — Railly Studio{% endblock %}{% block content %}<article class="wrap game-detail">  <p class="eyebrow"><a href="{% url 'studio:game_list' %}">← Все игры</a></p>  <div class="game-detail-cover">    {% include "studio/includes/game_cover.html" with game=game size="lg" %}  </div>  <header class="game-header">    <span class="badge">{{ game.get_status_display }}</span>    <h1>{{ game.title }}</h1>    {% if game.tagline %}<p class="lead">{{ game.tagline }}</p>{% endif %}    <p class="meta">{{ game.genre }}{% if game.release_date %} · Релиз: {{ game.release_date|date:"d E Y" }}{% endif %}</p>  </header>  <div class="prose">    {{ game.description|linebreaks }}  </div></article>{% endblock %}
