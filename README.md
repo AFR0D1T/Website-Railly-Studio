@@ -5,7 +5,7 @@
 ## 🌐 Онлайн версия
 
 Проект доступен по ссылке:  
-[👉 https://твой-сайт.com](https://afrodit.pythonanywhere.com/)
+[👉 https://Railly_Studio.com](https://afrodit.pythonanywhere.com/)
 
 ## О проекте
 
