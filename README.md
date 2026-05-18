@@ -31,5 +31,4 @@
 - Django
 - HTML
 - CSS
-- JavaScript
 - SQLite3
